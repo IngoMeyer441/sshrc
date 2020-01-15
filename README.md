@@ -1,3 +1,7 @@
+## Mirror note
+
+This repository is only a mirror of the original sshrc code which was written by Russell Stewart. I created this mirror when the original repository disappeared from [GitHub](https://github.com/Russell91/sshrc).
+
 ## Usage
 
 sshrc works just like ssh, but it also sources the ~/.sshrc on your local computer after logging in remotely.
@@ -18,17 +22,17 @@ You can use this to set environment variables, define functions, and run post-lo
 #### OS X
 
     $ brew install sshrc
-    
+
 #### Ubuntu (12.04 or 14.04+)
 
     $ sudo add-apt-repository ppa:russell-s-stewart/ppa
     $ sudo apt-get update
     $ sudo apt-get install sshrc
-    
+
 #### Everything else
 
-    $ wget https://raw.githubusercontent.com/Russell91/sshrc/master/sshrc && 
-    chmod +x sshrc && 
+    $ wget https://raw.githubusercontent.com/Russell91/sshrc/master/sshrc &&
+    chmod +x sshrc &&
     sudo mv sshrc /usr/local/bin #or anywhere else on your PATH
 
 ## Advanced configuration
@@ -60,7 +64,7 @@ If you use tmux frequently, you can make sshrc work there as well. The following
 
     $ cat << 'EOF' >> ~/.sshrc
     alias foo='echo I work with tmux, too'
-    
+
     tmuxrc() {
         local TMUXDIR=/tmp/russelltmuxserver
         if ! [ -d $TMUXDIR ]; then

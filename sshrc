@@ -44,6 +44,9 @@ EOF
 
             echo $'"$( cat << 'EOF' | openssl enc -base64
 #!/usr/bin/env bash
+                if [ -z "${SSHHOME}" ]; then
+                    export SSHHOME="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+                fi
                 exec bash --rcfile <(echo '
                 [ -r /etc/profile ] && source /etc/profile
                 if [ -r ~/.bash_profile ]; then source ~/.bash_profile

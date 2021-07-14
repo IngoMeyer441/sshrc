@@ -22,7 +22,7 @@ function sshrc() {
         else
             WELCOME_MSG=""
         fi
-        ssh -t "$DOMAIN" $SSHARGS "
+        ssh -t "$DOMAIN" "${SSHARGS[@]}" "
             command -v openssl >/dev/null 2>&1 || { echo >&2 \"sshrc requires openssl to be installed on the server, but it's not. Aborting.\"; exit 1; }
             $WELCOME_MSG
             export SSHHOME=\$(mktemp -d -t .$(whoami).sshrc.XXXX)
@@ -72,12 +72,13 @@ EOF
 }
 
 function sshrc_parse() {
+  declare -ga SSHARGS
   while [[ -n $1 ]]; do
     case $1 in
       -b | -c | -D | -E | -e | -F | -I | -i | -L | -l | -m | -O | -o | -p | -Q | -R | -S | -W | -w )
-        SSHARGS="$SSHARGS $1 $2"; shift ;;
+        SSHARGS+=("$1" "$2"); shift ;;
       -* )
-        SSHARGS="$SSHARGS $1" ;;
+        SSHARGS+=("$1") ;;
       *)
         if [ -z "$DOMAIN" ]; then
          DOMAIN="$1"
@@ -91,7 +92,7 @@ function sshrc_parse() {
     shift
   done
   if [ -z $DOMAIN ]; then
-    ssh $SSHARGS; exit 1;
+    ssh "${SSHARGS[@]}"; exit 1;
   fi
 }
 

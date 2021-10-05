@@ -72,7 +72,7 @@ EOF
 }
 
 function sshrc_parse() {
-  declare -ga SSHARGS
+  SSHARGS=()
   while [[ -n $1 ]]; do
     case $1 in
       -b | -c | -D | -E | -e | -F | -I | -i | -L | -l | -m | -O | -o | -p | -Q | -R | -S | -W | -w )

@@ -75,7 +75,7 @@ function sshrc_parse() {
   SSHARGS=()
   while [[ -n $1 ]]; do
     case $1 in
-      -b | -c | -D | -E | -e | -F | -I | -i | -L | -l | -m | -O | -o | -p | -Q | -R | -S | -W | -w )
+      -b | -c | -D | -E | -e | -F | -I | -i | -J | -L | -l | -m | -O | -o | -p | -Q | -R | -S | -W | -w )
         SSHARGS+=("$1" "$2"); shift ;;
       -* )
         SSHARGS+=("$1") ;;
